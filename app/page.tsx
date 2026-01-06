@@ -1,19 +1,18 @@
-import { Header } from './components/layout/Header'
-import { Footer } from './components/layout/Footer'
-import { Hero } from './components/sections/Hero'
-import { Services } from './components/sections/Services'
-import { About } from './components/sections/About'
-import { TechStack } from './components/sections/TechStack'
-import { Contact } from './components/sections/Contact'
+import { Header, Footer } from '@/modules/shared'
+import { Hero, Services, About, TechStack, Contact } from '@/modules/marketing'
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-black text-white">
+    <main className="min-h-screen">
       <Header />
       <Hero />
+         <div className="section-white-gap" />
       <Services />
+      <div className="section-white-gap" />
       <About />
+      <div className="section-white-gap" />
       <TechStack />
+         <div className="section-white-gap" />
       <Contact />
       <Footer />
     </main>

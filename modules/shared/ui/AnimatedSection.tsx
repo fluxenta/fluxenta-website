@@ -1,13 +1,19 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { MOTION_CONFIG } from '@/constants/motion'
 
 interface AnimatedSectionProps {
   children: React.ReactNode
   className?: string
+  style?: React.CSSProperties
 }
 
-export function AnimatedSection({ children, className = '' }: AnimatedSectionProps) {
+export function AnimatedSection({
+  children,
+  className = '',
+  style,
+}: AnimatedSectionProps) {
   const [isVisible, setIsVisible] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
 
@@ -19,7 +25,7 @@ export function AnimatedSection({ children, className = '' }: AnimatedSectionPro
           observer.disconnect()
         }
       },
-      { threshold: 0.1 }
+      { threshold: MOTION_CONFIG.threshold }
     )
 
     if (ref.current) {
@@ -32,9 +38,16 @@ export function AnimatedSection({ children, className = '' }: AnimatedSectionPro
   return (
     <div
       ref={ref}
-      className={`transition-all duration-700 ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-      } ${className}`}
+      className={`
+        transition-all
+        ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
+        ${className}
+      `}
+      style={{
+        transitionDuration: `${MOTION_CONFIG.duration}ms`,
+        transitionTimingFunction: MOTION_CONFIG.easing,
+        ...style,
+      }}
     >
       {children}
     </div>
