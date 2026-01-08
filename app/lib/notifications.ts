@@ -1,20 +1,31 @@
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function sendInternalNotification(
   type: 'NEW' | 'RESCHEDULE', 
   data: any
 ) {
+  // 1. Silent Safety Check
+  // We check for variables, but if they are missing, we simply return (exit).
+  // No console errors will be printed.
+  const apiKey = process.env.RESEND_API_KEY;
+  const toEmail = process.env.COMPANY_EMAIL;
+
+  if (!apiKey || !toEmail) {
+    return; // Stop silently
+  }
+
+  // 2. Initialize Resend (Only happens if keys exist)
+  const resend = new Resend(apiKey);
+
   const subject = type === 'NEW' 
     ? `🚀 New Lead: ${data.name}` 
     : `🗓️ Rescheduled: ${data.name} (Updated Time)`;
 
   try {
     await resend.emails.send({
-      from: 'Fluxenta System <onboarding@resend.dev>', // Use your verified domain if you have one
-      to: process.env.COMPANY_EMAIL as string,
-      replyTo: data.email, // Allows you to just hit "Reply" to email the client
+      from: 'Fluxenta System <onboarding@resend.dev>',
+      to: toEmail,
+      replyTo: data.email, 
       subject: subject,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
@@ -59,9 +70,11 @@ export async function sendInternalNotification(
         </div>
       `
     });
-    console.log("Notification email sent successfully.");
+    // Email sent successfully.
   } catch (error) {
-    console.error("Failed to send email:", error);
-    // We don't throw error here to avoid blocking the user's success screen
+    // 3. SILENT CATCH
+    // If sending fails (e.g., API down, limit reached), we do NOTHING.
+    // The user will still see the "Success" screen on the frontend.
+    return;
   }
 }
