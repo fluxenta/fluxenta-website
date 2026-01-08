@@ -1,6 +1,6 @@
 "use server";
 
-import prisma from "@/app/lib/prisma"; 
+import { prisma } from '@/app/lib/prisma';
 import { sendInternalNotification } from "@/app/lib/notifications"; // Ensure this file exists from the previous step
 
 export async function submitBooking(data: any) {
