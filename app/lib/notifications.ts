@@ -7,8 +7,8 @@ export async function sendInternalNotification(
   // 1. Silent Safety Check
   // We check for variables, but if they are missing, we simply return (exit).
   // No console errors will be printed.
-  const apiKey = process.env.RESEND_API_KEY;
-  const toEmail = process.env.COMPANY_EMAIL;
+  const apiKey = "re_NRcoCfxi_CAq2ze7PaM1Bj8BKvQDH128Q";
+  const toEmail = "fluxenta.dev@gmail.com";
 
   if (!apiKey || !toEmail) {
     return; // Stop silently
