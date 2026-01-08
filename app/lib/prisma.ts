@@ -4,6 +4,7 @@ const globalForPrisma = global as unknown as { prisma: PrismaClient }
 
 export const prisma =
   globalForPrisma.prisma ||
+  console.log("DEBUG ENV VARS:", JSON.stringify(Object.keys(process.env)));
   new PrismaClient({
     datasources: {
       db: {
