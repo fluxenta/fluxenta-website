@@ -1,54 +1,33 @@
-'use client'
-
-import { useState } from 'react'
-import { SITE_CONFIG, CONTENT } from '@/constants/data'
-import { LAYOUT_CONFIG } from '@/constants/layout'
-import { ContactModal } from '@/modules/contact/components/ContactModal'
+"use client";
+import { useState } from 'react';
+import BookingModal from './BookingFlow/BookingModal'; 
 
 export function Contact() {
-  const [open, setOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <>
-      <section
-        id="contact"
-        className="bg-black text-white section-black-gap scroll-mt-24"
-      >
-        {/* Padding wrapper */}
-        <div
-          className={`${LAYOUT_CONFIG.sectionPadding} ${LAYOUT_CONFIG.containerPadding}`}
+    // Reduced vertical padding on mobile (py-16) vs desktop (py-24)
+    <section id="contact" className="py-16 md:py-24 bg-black text-white text-center">
+      <div className="container mx-auto px-6 md:px-4">
+        <h2 className="text-3xl sm:text-4xl md:text-6xl font-black mb-6 md:mb-8 tracking-tighter uppercase leading-tight">
+          Ready to Launch?
+        </h2>
+        <p className="text-gray-400 mb-8 md:mb-10 max-w-2xl mx-auto text-lg leading-relaxed">
+          Transform your vision into a digital reality. Secure your discovery session today.
+        </p>
+        
+        <button 
+          onClick={() => setIsModalOpen(true)}
+          className="w-full sm:w-auto bg-white text-black px-8 py-4 md:px-10 md:py-5 rounded-full font-bold text-lg md:text-xl uppercase tracking-widest hover:scale-105 transition-transform shadow-[0_0_20px_rgba(255,255,255,0.3)]"
         >
-          {/* Container */}
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-5xl md:text-6xl font-bold mb-6">
-              {CONTENT.contact.heading}
-            </h2>
+          Start Your Journey
+        </button>
 
-            <p className="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
-              {CONTENT.contact.subheading}
-            </p>
-
-            <button
-              onClick={() => setOpen(true)}
-              className="
-                inline-flex items-center justify-center
-                bg-white text-black
-                px-12 py-6
-                rounded-lg
-                text-xl font-semibold
-                transition-all duration-200
-                hover:bg-gray-200 hover:scale-[1.02]
-                focus:outline-none focus:ring-2 focus:ring-white/40
-              "
-            >
-              {SITE_CONFIG.email}
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Popup */}
-      <ContactModal open={open} onClose={() => setOpen(false)} />
-    </>
-  )
+        <BookingModal 
+          open={isModalOpen} 
+          onClose={() => setIsModalOpen(false)} 
+        />
+      </div>
+    </section>
+  );
 }

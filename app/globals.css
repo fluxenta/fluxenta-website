@@ -32,6 +32,111 @@ body {
     backdrop-filter: blur(10px);
 }
 
+.fluxenta-phone-wrapper .PhoneInput {
+    display: flex;
+    gap: 16px;
+    /* Space between Country Box and Number Box */
+    align-items: stretch;
+    /* Ensure both boxes are same height */
+}
+
+
+/* 2. BOX 1: The Country Flag & Dropdown */
+
+.fluxenta-phone-wrapper .PhoneInputCountry {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f9fafb;
+    /* Light gray background */
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 0 12px;
+    width: 100px;
+    /* Fixed width for consistency */
+    margin-right: 0;
+    /* Override default */
+    transition: all 0.2s;
+}
+
+.fluxenta-phone-wrapper .PhoneInputCountry:hover {
+    border-color: #000;
+}
+
+
+/* 3. BOX 2: The Number Input Field */
+
+.fluxenta-phone-wrapper .PhoneInputInput {
+    flex: 1;
+    background: #fff;
+    /* White background */
+    border-bottom: 2px solid #f3f4f6;
+    /* Underline style */
+    padding: 12px 0;
+    transition: border-color 0.2s;
+}
+
+.fluxenta-phone-wrapper .PhoneInputInput:focus {
+    border-bottom-color: #000;
+    /* Black underline on focus */
+}
+
+
+/* 4. FIXING THE DROPDOWN (The "Small Box" Logic) */
+
+
+/* This targets the actual dropdown list that appears */
+
+:root {
+    --PhoneInputCountrySelect-marginRight: 0;
+}
+
+.PhoneInputCountrySelectArrow {
+    display: none;
+    /* Hide the default ugly arrow, clean look */
+}
+
+
+/* Force the native select to be invisible but clickable over the flag */
+
+.PhoneInputCountrySelect {
+    cursor: pointer;
+}
+
+
+/* If using the custom dropdown (non-native), style the list */
+
+
+/* Note: The library usually renders a native <select> on mobile/desktop unless configured otherwise.
+   To force a strict height on a custom dropdown, we target standard HTML select behavior constraints. */
+
+
+/* Optional: Flag size adjustments */
+
+.PhoneInputCountryIcon {
+    width: 24px;
+    height: 18px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #e5e7eb;
+    border-radius: 20px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: #d1d5db;
+}
+
 
 /* ------------------------
    Typography helpers

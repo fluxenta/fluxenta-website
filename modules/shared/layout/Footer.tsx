@@ -6,15 +6,14 @@ export function Footer() {
 
   return (
     <footer className="bg-black text-white border-t border-white/10">
-      {/* Padding wrapper */}
-      <div className={`py-12 ${LAYOUT_CONFIG.containerPadding}`}>
-        {/* Container */}
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
-          <div className="text-2xl font-bold mb-4 md:mb-0">
+      <div className={`py-8 md:py-12 px-6 ${LAYOUT_CONFIG.containerPadding}`}>
+        {/* Flex Column on mobile (stacked), Row on desktop */}
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0 text-center md:text-left">
+          <div className="text-xl md:text-2xl font-bold">
             {SITE_CONFIG.name.toUpperCase()}
           </div>
 
-          <div className="text-gray-400 text-sm">
+          <div className="text-gray-400 text-sm leading-relaxed">
             © {currentYear} {SITE_CONFIG.name}. {CONTENT.footer.tagline}
           </div>
         </div>

@@ -9,15 +9,22 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "framer-motion": "^12.23.26",
+    "@prisma/adapter-pg": "^7.2.0",
+    "@prisma/client": "^7.2.0",
+    "date-fns": "^4.1.0",
+    "framer-motion": "^12.24.10",
     "lucide-react": "^0.562.0",
     "next": "16.1.1",
+    "pg": "^8.16.3",
+    "prisma": "^7.2.0",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-    "react-phone-number-input": "^3.4.14"
+    "react-phone-number-input": "^3.4.14",
+    "resend": "^6.6.0"
   },
   "devDependencies": {
     "@types/node": "^20",
+    "@types/pg": "^8.16.0",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "autoprefixer": "^10.4.23",
