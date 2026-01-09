@@ -1,5 +1,0 @@
-export { Hero } from './components/Hero'
-export { Services } from './components/Services'
-export { About } from './components/About'
-export { TechStack } from './components/TechStack'
-export { Contact } from './components/Contact'

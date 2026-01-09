@@ -1,0 +1,97 @@
+@import "tailwindcss";
+@theme {
+    /* The Locked-In Fluxenta Palette */
+    --color-obsidian: #0B0C10;
+    --color-dark-grey: #1C1C1C;
+    --color-cyan-custom: #66FCF1;
+    --color-violet-custom: #8A2BE2;
+    --color-stone-muted: #8A8784;
+    /* Custom Animations */
+    --animate-pulse-glow: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    @keyframes pulse-glow {
+        0%,
+        100% {
+            opacity: 1;
+            filter: brightness(1);
+        }
+        50% {
+            opacity: 0.7;
+            filter: brightness(1.5);
+        }
+    }
+}
+
+
+/* Base Styles */
+
+:root {
+    background-color: var(--color-obsidian);
+    color: white;
+}
+
+@layer components {
+    /* Reusable Glass Effect for our Nav & Cards */
+    .glass-pill {
+        @apply bg-[var(--color-dark-grey)]/40 backdrop-blur-md border border-white/10 rounded-full shadow-2xl;
+    }
+    .glass-card {
+        @apply bg-[var(--color-dark-grey)]/20 backdrop-blur-xl border border-white/5 rounded-2xl;
+    }
+    /* The "Ghost" Masking used in the reference carousel */
+    .mask-fade-sides {
+        mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+    }
+    /* Custom Animation for the De-blur Reveal */
+    .word-reveal {
+        opacity: 0;
+        filter: blur(10px);
+        transform: translateY(10px);
+        animation: blurIn 0.8s ease forwards;
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.custom-calendly-container iframe {
+    color-scheme: dark;
+}
+
+
+/* Optional: hide the cookie banner inside calendly if your plan allows */
+
+.custom-calendly-container [data-testid="cookie-banner"] {
+    display: none !important;
+}
+
+
+/* Remove white borders/bg from the Calendly container */
+
+.custom-calendly-container {
+    background-color: #0a0a0a !important;
+}
+
+
+/* Force the iframe to occupy the full container without padding */
+
+.custom-calendly-container iframe {
+    color-scheme: dark;
+    background-color: transparent !important;
+}
+
+
+/* Hide the "Powered by Calendly" ribbon for a cleaner look */
+
+.custom-calendly-container [data-testid="powered-by-component"] {
+    display: none !important;
+}
+
+@keyframes blurIn {
+    to {
+        opacity: 1;
+        filter: blur(0px);
+        transform: translateY(0px);
+    }
+}
