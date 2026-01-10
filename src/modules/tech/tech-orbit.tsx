@@ -11,11 +11,27 @@ interface OrbitProps {
   }[];
 }
 
+
 export const TechOrbit = ({ orbitItems }: OrbitProps) => {
   const [isHoveringBox, setIsHoveringBox] = React.useState(false);
   const [hoveredId, setHoveredId] = React.useState<number | null>(null);
-  
-  const radius = 160; 
+
+
+  const [radius, setRadius] = React.useState(160);
+  React.useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setRadius(110);
+      } else {
+        setRadius(160);
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const step = 360 / orbitItems.length;
 
   return (

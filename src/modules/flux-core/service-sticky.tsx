@@ -14,7 +14,7 @@ export const ServiceSticky = () => {
         {/* LEFT SIDE: Sticky Header (Animation Core Removed) */}
         <div className="lg:w-1/2 lg:h-screen lg:sticky lg:top-0 flex flex-col justify-center">
           <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tighter leading-[0.9] mb-8">
-            The Full-Cycle <br /> Growth Stack.
+            Your All-In-One <br />Growth Team.
           </h2>
           
           {/* Visual Asset removed as requested. 
@@ -43,7 +43,7 @@ const ServiceCard = ({ service, index }: { service: any, index: number }) => {
       style={{ 
         top: `calc(10% + ${index * 32}px)`, // Offset for stacking visibility
       }}
-      className="sticky top-0 w-full h-[520px] bg-[#0A0A0A] border border-white/10 rounded-[32px] p-8 md:p-12 shadow-2xl flex flex-col overflow-hidden"
+      className="sticky top-0 w-full min-h-[580px] md:h-[520px] bg-[#0A0A0A] border border-white/10 rounded-[32px] p-8 md:p-12 shadow-2xl flex flex-col overflow-hidden mb-10 md:mb-0"
     >
       <div className="flex justify-between items-start mb-12">
         <div>
